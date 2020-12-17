@@ -1,3 +1,4 @@
+
 const chai = require('chai');
 const expect = chai.expect;
 
@@ -82,28 +83,18 @@ describe('Activity', () => {
   });
 
   it('should return minutes active', () => {
-    
-  it.skip('should have an appropriate constructor', () => {
-    expect(activity.id).to.equal(data.userID);
-    expect(activity.date).to.equal(data.date);
-    expect(activity.steps).to.equal(data.numSteps);
-    expect(activitiy.minActive).to.equal(data.minutesActive);
-    expect(activity.flightsOfStairs).to.equal(data.flightsOfStairs);
-  });
-
-  it.skip('should return minutes active', () => {
     const minutes = activity.returnMinutes();
 
     expect(minutes).to.equal(data.minutesActive);
   });
 
-  it('should return whether step goal was reached', () => {    
+  it('should return whether step goal was reached', () => {
     const user1 = userRepo.data.find(user => user.id === activity.id);
     const goal1 = user1.dailyStepGoal;
     const didHitGoal1 = activity.checkStepGoal(goal1);
 
     expect(activity.steps).to.be.at.most(goal1);
-    expect(didHitGoal1).to.equal(false);    
+    expect(didHitGoal1).to.equal(false);
 
     const newData = data = {
       "userID": 2,
@@ -119,13 +110,5 @@ describe('Activity', () => {
 
     expect(newActivity.steps).to.be.at.least(goal2);
     expect(didHitGoal2).to.equal(true);
-
-  it.skip('should return whether step goal was reached', () => {    
-    const user = userRepo.data.find(user => user.id === activity.id);
-    const goal = user.dailyStepGoal;
-    const didHitGoal = activity.checkStepGoal();
-
-    expect(activity.steps).to.be.at.least(user.datilyStepGoal);
-    expect(didHitGoal).to.equal(true);    
   });
 });
