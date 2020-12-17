@@ -129,13 +129,7 @@ class ActivityRepo {
     }, 0);
   }
 
-  calculateDailyAverages(date) {
-    // get data for date
-    // record number of pieces of data here
-    // iterate through data, add up totals for stairs, steps, minutes
-    // divide each by # pieces data
-    // add to dailyAverages obj, key is date, value is obj holding averages
-
+  calculateDailyAverages(date) {  
     const dateData = this.activityData.filter(data => data.date === date);
     const piecesOfData = dateData.length;
     const totals = dateData.reduce((totals, data) => {

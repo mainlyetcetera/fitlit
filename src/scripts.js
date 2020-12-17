@@ -4,6 +4,8 @@ const currentHydrationRepo = new HydrationRepo(hydrationData);
 const currentHydration = new Hydration(currentHydrationRepo.data[4999]);
 const currentSleepRepo = new SleepRepo(sleepData);
 const currentSleep = new Sleep(currentSleepRepo.data[4999]);
+const currentActivityRepo = new ActivityRepo(activityData, userData);
+const currentActivity = new Activity(currentActivityRepo.activityData[4999]);
 const firstNameDisplay = document.querySelector('.first-name-section');
 const fullNameDisplay = document.querySelector('.full-name');
 const addressDisplay = document.querySelector('.address');
@@ -22,13 +24,16 @@ const sleepAvgDisplay = document.querySelector('.sleep-average')
 const sleepWeekButton = document.querySelector('.sleep-week');
 const sleepDayButton = document.querySelector('.sleep-day');
 const sleepAvgButton = document.querySelector('.sleep-avg');
+const todaysSteps = document.querySelector('.steps');
+const todaysMilesTraveled = document.querySelector('.miles');
+const todaysActivity = document.querySelector('.activity');
 
 const hydrationWeekView = (id, date) => {
-  waterConsumed.innerText = `Water Consumed This Past Week  ${currentHydrationRepo.returnWaterConsumed(id, date)}`;
+  waterConsumed.innerText = `Water Consumed This Past Week - ${currentHydrationRepo.returnWaterConsumed(id, date)}`;
 }
 
 const hydrationDayView = () => {
-  waterConsumed.innerText = `Water Consumed Today -     ${currentHydration.numOunces} ounces!`;
+  waterConsumed.innerText = `Water Consumed Today - ${currentHydration.numOunces} ounces!`;
 }
 
 const sleepWeekView = (id, date) => {
@@ -49,20 +54,23 @@ const displaySleepAverages = (id) => {
 }
 
 const displayAllUserData = () => {
-  if (  firstNameDisplay.innerText != `Hello ${currentUser.provideUsersFirstName()}!`) {
-  firstNameDisplay.innerText = `Hello ${currentUser.provideUsersFirstName()}!`;
-  fullNameDisplay.innerText += `${currentUser.name}`;
-  addressDisplay.innerText += `${currentUser.address}`;
-  emailDisplay.innerText += `${currentUser.email}`;
-  strideLengthDisplay.innerText += `${currentUser.strideLength}`;
-  dailyStepGoal.innerText += `${currentUser.dailyStepGoal}`;
-  averageStepGoal.innerText += `        ${currentUserRepo.userStepGoalAverage()}.`;
-  waterConsumed.innerText = `Water Consumed Today -   ${currentHydration.numOunces} ounces!`;
-  sleepDurationDisplay.innerText = `Hours Slept: ${currentSleep.returnHoursSlept()}`;
-  sleepQualityDisplay.innerText = `Sleep Quality: ${currentSleep.returnSleepQuality()}`;
-  displayFriendsByName();
-}
-};
+  if ( firstNameDisplay.innerText != `Hello ${currentUser.provideUsersFirstName()}!`) {
+    todaysSteps.innerText = `Steps Today: ${currentActivity.steps}`;
+    todaysMilesTraveled.innerText = `Miles Traveled: ${currentActivityRepo.calculateMiles(currentUser.id, currentActivity.date)}`;
+    todaysActivity.innerText = `Today's Activity: ${currentActivity.returnMinutes()} minutes.`;
+    firstNameDisplay.innerText = `Hello ${currentUser.provideUsersFirstName()}!`;
+    fullNameDisplay.innerText += `${currentUser.name}`;
+    addressDisplay.innerText += `${currentUser.address}`;
+    emailDisplay.innerText += `${currentUser.email}`;
+    strideLengthDisplay.innerText += `${currentUser.strideLength}`;
+    dailyStepGoal.innerText += `${currentUser.dailyStepGoal}`;
+    averageStepGoal.innerText += `        ${currentUserRepo.userStepGoalAverage()}.`;
+    waterConsumed.innerText = `Water Consumed Today -   ${currentHydration.numOunces} ounces!`;
+    sleepDurationDisplay.innerText = `Hours Slept: ${currentSleep.returnHoursSlept()}`;
+    sleepQualityDisplay.innerText = `Sleep Quality: ${currentSleep.returnSleepQuality()}`;
+    displayFriendsByName();
+    }
+  };
 
 function displayFriendsByName() {
   currentUser.friends.forEach(id => {

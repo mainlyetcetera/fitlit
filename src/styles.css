@@ -35,8 +35,9 @@ h1 {
   text-align: center;
   margin: 0%;
   padding-top: .2em;
+  padding-bottom: 0%;
   height: 28%;
-  width: 60%;
+  width: 100%;
   font-size: 250%;
 }
 
