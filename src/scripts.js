@@ -60,7 +60,7 @@ const displayAllUserData = () => {
   if ( firstNameDisplay.innerText != `Hello ${currentUser.provideUsersFirstName()}!`) {
     todaysSteps.innerText = `Steps Today: ${currentActivity.steps}`;
     todaysMilesTraveled.innerText = `Miles Traveled: ${currentActivityRepo.calculateMiles(currentUser.id, currentActivity.date)}`;
-    todaysActivityTime.innerText = `Today's Activity: ${currentActivity.returnMinutes()}`;
+    todaysActivityTime.innerText = `Today's Activity: ${currentActivity.returnMinutes()} minutes`;
     firstNameDisplay.innerText = `Hello ${currentUser.provideUsersFirstName()}!`;
     fullNameDisplay.innerText += `${currentUser.name}`;
     addressDisplay.innerText += ` ${currentUser.address}`;
@@ -108,14 +108,14 @@ hydrationDayButton.addEventListener('click', () => {
 });
 
 activityDayButton.addEventListener('click', function () {
-  todaysActivityTime.innerText = `Today's Activity: ${currentActivity.returnMinutes()}`;
+  todaysActivityTime.innerText = `Today's Activity: ${currentActivity.returnMinutes()} minutes`;
   todaysSteps.innerText = `Steps Today: ${currentActivity.steps}`;  
   todaysMilesTraveled.innerText = `Miles Traveled: ${currentActivityRepo.calculateMiles(currentUser.id, currentActivity.date)}`;  
 });
 
 activityWeekButton.addEventListener('click', function () {
   todaysActivityTime.innerText = `Average Activity: ${
-    currentActivityRepo.calculateAvgMinutesActive(currentUser.id, currentActivity.date)}`;
+    currentActivityRepo.calculateAvgMinutesActive(currentUser.id, currentActivity.date)} minutes`;
   todaysSteps.innerText = `Average Steps: ${
     currentActivityRepo.calculateAvgSteps(currentUser.id, currentActivity.date)}`;
   todaysMilesTraveled.innerText = `Average Flights Climbed: ${
