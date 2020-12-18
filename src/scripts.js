@@ -60,7 +60,7 @@ const displayAllUserData = () => {
   if ( firstNameDisplay.innerText != `Hello ${currentUser.provideUsersFirstName()}!`) {
     todaysSteps.innerText = `Steps Today: ${currentActivity.steps}`;
     todaysMilesTraveled.innerText = `Miles Traveled: ${currentActivityRepo.calculateMiles(currentUser.id, currentActivity.date)}`;
-    todaysActivityTime.innerText = `Today's Activity: ${currentActivity.returnMinutes()} minutes.`;
+    todaysActivityTime.innerText = `Today's Activity: ${currentActivity.returnMinutes()}`;
     firstNameDisplay.innerText = `Hello ${currentUser.provideUsersFirstName()}!`;
     fullNameDisplay.innerText += `${currentUser.name}`;
     addressDisplay.innerText += `${currentUser.address}`;
@@ -77,9 +77,11 @@ const displayAllUserData = () => {
 
 function displayFriendsByName() {
   currentUser.friends.forEach(id => {
-  friendsList.innerText += ` ${userData[id - 1].name}. `;
+    friendsList.innerText += ` ${userData[id - 1].name}. `;
   });
-};
+}
+
+window.onload = displayAllUserData();
 
 sleepAvgButton.addEventListener('click', () => {
   displaySleepAverages(currentUser.id);
@@ -101,15 +103,21 @@ hydrationDayButton.addEventListener('click', () => {
   hydrationDayView();
 });
 
+activityDayButton.addEventListener('click', function () {
+  todaysActivityTime.innerText = `Today's Activity: ${currentActivity.returnMinutes()}`;
+  todaysSteps.innerText = `Steps Today: ${currentActivity.steps}`;  
+  todaysMilesTraveled.innerText = `Miles Traveled: ${currentActivityRepo.calculateMiles(currentUser.id, currentActivity.date)}`;  
+});
+
 activityWeekButton.addEventListener('click', function () {
   todaysActivityTime.innerText = `Average Activity: ${
-    currentActivityRepo.calculateAvgMinutesActive(currentUser.id, currentActivity.date)} minutes.`;
+    currentActivityRepo.calculateAvgMinutesActive(currentUser.id, currentActivity.date)}`;
   todaysSteps.innerText = `Average Steps: ${
     currentActivityRepo.calculateAvgSteps(currentUser.id, currentActivity.date)}`;
   todaysMilesTraveled.innerText = `Average Flights Climbed: ${
     currentActivityRepo.calculateAvgStairs(currentUser.id, currentActivity.date)}`;
 });
 
-activityTrends.addEventListener('click', function () {
+// activityTrends.addEventListener('click', function () {
 
-})
+// })
