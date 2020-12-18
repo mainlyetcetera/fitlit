@@ -28,7 +28,8 @@ const todaysSteps = document.querySelector('.steps');
 const todaysMilesTraveled = document.querySelector('.miles');
 const todaysActivityTime = document.querySelector('.activity');
 const activityDayButton = document.querySelector('.activity-day');
-const activityWeekButton = document.querySelector('.activity-week')
+const activityWeekButton = document.querySelector('.activity-week');
+const activityTrends = document.querySelector('.trends');
 
 const hydrationWeekView = (id, date) => {
   waterConsumed.innerText = `Water Consumed This Past Week - ${currentHydrationRepo.returnWaterConsumed(id, date)}`;
@@ -103,4 +104,8 @@ hydrationDayButton.addEventListener('click', () => {
 activityWeekButton.addEventListener('click', function () {
   todaysActivityTime.innerText = `Average Activity: ${
     currentActivityRepo.calculateAvgMinutesActive(currentUser.id, currentActivity.date)} minutes.`
+});
+
+activityTrends.addEventListener('click', function () {
+  
 })
