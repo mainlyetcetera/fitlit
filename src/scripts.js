@@ -72,12 +72,16 @@ const displayAllUserData = () => {
     sleepDurationDisplay.innerText = `Hours Slept: ${currentSleep.returnHoursSlept()}`;
     sleepQualityDisplay.innerText = `Sleep Quality: ${currentSleep.returnSleepQuality()}`;
     displayFriendsByName();
-    }
-  };
+  }
+}
 
 function displayFriendsByName() {
-  currentUser.friends.forEach(id => {
-    friendsList.innerText += ` ${userData[id - 1].name}. `;
+  currentUser.friends.forEach((id, index) => {    
+    if (index + 1 === currentUser.friends.length) {
+      friendsList.innerText += `${userData[id - 1].name}`
+    } else {
+      friendsList.innerText += ` ${userData[id - 1].name}, `;
+    }
   });
 }
 
