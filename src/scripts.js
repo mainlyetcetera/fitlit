@@ -26,7 +26,9 @@ const sleepDayButton = document.querySelector('.sleep-day');
 const sleepAvgButton = document.querySelector('.sleep-avg');
 const todaysSteps = document.querySelector('.steps');
 const todaysMilesTraveled = document.querySelector('.miles');
-const todaysActivity = document.querySelector('.activity');
+const todaysActivityTime = document.querySelector('.activity');
+const activityDayButton = document.querySelector('.activity-day');
+const activityWeekButton = document.querySelector('.activity-week')
 
 const hydrationWeekView = (id, date) => {
   waterConsumed.innerText = `Water Consumed This Past Week - ${currentHydrationRepo.returnWaterConsumed(id, date)}`;
@@ -57,7 +59,7 @@ const displayAllUserData = () => {
   if ( firstNameDisplay.innerText != `Hello ${currentUser.provideUsersFirstName()}!`) {
     todaysSteps.innerText = `Steps Today: ${currentActivity.steps}`;
     todaysMilesTraveled.innerText = `Miles Traveled: ${currentActivityRepo.calculateMiles(currentUser.id, currentActivity.date)}`;
-    todaysActivity.innerText = `Today's Activity: ${currentActivity.returnMinutes()} minutes.`;
+    todaysActivityTime.innerText = `Today's Activity: ${currentActivity.returnMinutes()} minutes.`;
     firstNameDisplay.innerText = `Hello ${currentUser.provideUsersFirstName()}!`;
     fullNameDisplay.innerText += `${currentUser.name}`;
     addressDisplay.innerText += `${currentUser.address}`;
@@ -78,22 +80,27 @@ function displayFriendsByName() {
   });
 };
 
-sleepAvgButton.addEventListener('click', function() {
+sleepAvgButton.addEventListener('click', () => {
   displaySleepAverages(currentUser.id);
 })
 
-sleepDayButton.addEventListener('click', function() {
+sleepDayButton.addEventListener('click', () => {
   sleepDayView();
 })
 
-sleepWeekButton.addEventListener('click', function() {
+sleepWeekButton.addEventListener('click', () => {
   sleepWeekView(currentUser.id, currentSleep.date);
 })
 
-hydrationWeekButton.addEventListener('click', function() {
+hydrationWeekButton.addEventListener('click', () => {
   hydrationWeekView(currentUser.id, currentHydration.date);
 });
 
-hydrationDayButton.addEventListener('click', function() {
+hydrationDayButton.addEventListener('click', () => {
   hydrationDayView();
 });
+
+activityWeekButton.addEventListener('click', function () {
+  todaysActivityTime.innerText = `Average Activity: ${
+    currentActivityRepo.calculateAvgMinutesActive(currentUser.id, currentActivity.date)} minutes.`
+})
