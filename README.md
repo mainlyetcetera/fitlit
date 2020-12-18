@@ -33,6 +33,10 @@
   - be able to switch any of the data breakdowns to a last week view instead
   - be usable on both a mobile device and a desktop  
 
+<p align = "center">
+<img src="https://media.giphy.com/media/2dnMVHvqRlstHpzcpc/giphy.gif">
+</p>
+
 ---
 
 ## Installation Instructions
