@@ -63,11 +63,11 @@ const displayAllUserData = () => {
     todaysActivityTime.innerText = `Today's Activity: ${currentActivity.returnMinutes()}`;
     firstNameDisplay.innerText = `Hello ${currentUser.provideUsersFirstName()}!`;
     fullNameDisplay.innerText += `${currentUser.name}`;
-    addressDisplay.innerText += `${currentUser.address}`;
-    emailDisplay.innerText += `${currentUser.email}`;
-    strideLengthDisplay.innerText += `${currentUser.strideLength}`;
-    dailyStepGoal.innerText += `${currentUser.dailyStepGoal}`;
-    averageStepGoal.innerText += `        ${currentUserRepo.userStepGoalAverage()}.`;
+    addressDisplay.innerText += ` ${currentUser.address}`;
+    emailDisplay.innerText += ` ${currentUser.email}`;
+    strideLengthDisplay.innerText += ` ${currentUser.strideLength}`;
+    dailyStepGoal.innerText += ` ${currentUser.dailyStepGoal}`;
+    averageStepGoal.innerText += ` ${currentUserRepo.userStepGoalAverage()}`;
     waterConsumed.innerText = `Water Consumed Today -   ${currentHydration.numOunces} ounces!`;
     sleepDurationDisplay.innerText = `Hours Slept: ${currentSleep.returnHoursSlept()}`;
     sleepQualityDisplay.innerText = `Sleep Quality: ${currentSleep.returnSleepQuality()}`;
